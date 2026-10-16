@@ -1,0 +1,111 @@
+1.Erklären Sie den Unterschied zwischen der Line con und der Line vty.
+
+*  Line con (Console Line): Repräsentiert den physischen Konsolen-Anschluss (RJ45/RS232/USB) am Router oder Switch. 
+Sie wird für den lokalen Direktzugriff per Konsolenkabel verwendet – insbesondere bei der Erstkonfiguration oder wenn das Netzwerk nicht erreichbar ist.
+
+
+* Line vty (Virtual Terminal Line): Repräsentiert virtuelle Terminal-Sitzungen für den Fernzugriff über das Netzwerk (z. B. via Telnet oder SSH). 
+Ein Gerät verfügt typischerweise über mehrere VTY-Lines (z. B. line vty 0 4 für 5 parallele Verbindungen).
+
+
+
+2.Konfigurieren Sie einen Telnet Zugang und bauen Sie diesen über einen PC auf.
+Nutzen Sie dafür einen Switch, der Sie zum router weiterleitet.
+
+Router> enable
+Router# configure terminal
+Router(config)# interface GigabitEthernet0/0
+Router(config-if)# ip address 192.168.1.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+Router(config)# enable secret Cisco123
+Router(config)# line vty 0 4
+Router(config-line)# password telnetpass
+Router(config-line)# login
+Router(config-line)# transport input telnet
+Router(config-line)# exit
+
+
+
+
+
+3.Mit welchem Befehl kann man die aufgebaute Telnet Session überprüfen?
+
+   *    Router# show users
+
+
+
+
+
+4.Konfigurieren Sie die Voraussetzungen für einen ssh Zugriff des PCs auf den Router.
+
+
+Router> enable
+Router# configure terminal
+Router(config)# hostname R1
+R1(config)# ip domain-name meinnetz.local
+
+! RSA-Schlüssel generieren (mindestens 1024 Bit, empfohlen 2048)
+R1(config)# crypto key generate rsa general-keys modulus 2048
+R1(config)# ip ssh version 2
+
+! Lokalen Benutzer anlegen & Enable-Secret setzen
+R1(config)# username admin privilege 15 secret Admin***123!
+R1(config)# enable secret ***123!
+
+! VTY-Lines auf SSH umstellen
+R1(config)# line vty 0 4
+R1(config-line)# login local
+R1(config-line)# transport input ssh
+R1(config-line)# exit
+
+
+
+4.1 Stellen Sie die Verbindung vom Client zum Router über SSH auf.
+
+User Access Verification
+
+Username: admin
+Password: 
+Ahmad#enab
+Ahmad#enable
+Ahmad#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Ahmad(config)#
+or 
+
+C:\>ssh -l admin  192.168.1.1
+
+Password: 
+
+
+5.Mit welchem Befehl kann man die SSH-Verbindung anzeigen lassen.6.
+
+
+R1# show ssh
+
+
+
+
+
+
+6.Worin liegt der Unterschied zwischen SSH und Telnet?
+
+Eigenschaft				Telnet	                      				 SSH (Secure Shell)
+
+*Verschlüsselung		   Keine (Klartext)	  			Starke Verschlüsselung (Asymmetrisch/Symmetrisch)
+
+*Sicherheit			Unsicher (Passwörter & Daten abfangbar)	  	   Sicher gegen Eavesdropping & Man-in-the-Middle
+
+*Port				    TCP Port 23			  			TCP Port 22 
+
+*Authentifizierung	     Einfaches Passwort oder unverschlüsselt 		Passwort, RSA/ECDSA-Keys, Zertifikate
+
+
+*Einsatzbereich		      Nur in isolierten Laborumgebungen				Standard für Produktion und Fernwartung
+
+
+
+
+

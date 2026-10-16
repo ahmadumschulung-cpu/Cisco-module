@@ -1,0 +1,92 @@
+ 1.Wozu werden CDp und LLDp eingesetzt. Nennen Sie Einsatzznearien und Unterschiede der Protokolle.
+
+Wozu? * Automatische Erkennung direkt verbundener Nachbargeräte auf Layer 2 (ohne IP-Adresse).
+
+Einsatzszenarien:
+
+	Erstellen von Netzwerk-Topologien (welcher Switch hängt an welchem Router-Port?).	
+	Schnellere Fehlersuche (z. B. Duplex-Fehler oder falsche VLANs erkennen).
+	
+Unterschiede:
+		CDP: Proprietär von Cisco (Standard-Timer: 60s, Holdtime: 180s).
+		LLDP: Herstellerübergreifender IEEE-Standard (Standard-Timer: 30s, Holdtime: 120s).
+	
+
+
+ 2.Aif welcher Ebene kann man CDp und LLDP konfigurieren?
+
+Globale Ebene (config): Aktiviert/deaktiviert das Protokoll für das gesamte Gerät und stellt Timer ein.
+
+Interface-Ebene (config-if): Aktiviert/deaktiviert das Protokoll für einzelne Ports
+			    (bei LLDP getrennt nach Senden/Empfangen).
+
+
+
+
+ 3. Erstellen Sie ein Netzwerk mit einem Router und 2 Switchen, in unterschiedlichen Netzen, und hängen Sie an 
+die Switche jeweils Endgeräte und IP Telefonie.
+Konfigurieren Sie auf dem Router int g0/0 CDP und auf int g0/1 lldp für eingehenden Verbindung.
+
+*** Switch(config)#do sh lldp
+
+Global LLDP Information:
+    Status: ACTIVE
+    LLDP advertisements are sent every 30 seconds
+    LLDP hold time advertised is 120 seconds
+    LLDP interface reinitialisation delay is 2 seconds
+
+
+Switch#show cdp neighbors 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
+IP Phone     Fas 0/1          147            H P     7960         
+Router       Fas 0/2          178            R       C2900       Gig 0/0
+Router       Fas 0/2          178            R       C2900       Gig 0/0.20
+Switch#
+
+
+
+
+Switch(config)#do sh lldp neigh
+Capability codes:
+    (R) Router, (B) Bridge, (T) Telephone, (C) DOCSIS Cable Device
+    (W) WLAN Access Point, (P) Repeater, (S) Station, (O) Other
+Device ID           Local Intf     Hold-time  Capability      Port ID
+Router              Fa0/1          120        R               Gig0/2
+
+Total entries displayed: 1
+
+
+
+
+
+
+ 4.Setzen Sie den Timer bei CDP und LLDP auf jeweils 15 sekunden und die Holdtime auf 90 Sekunden.
+
+
+
+cdp timer 15
+cdp holdtime 90
+
+lldp timer 15
+lldp holdtime 90
+
+
+
+
+
+
+
+ 5.Worin unterscheiden Sie die Detail Ausgaben der jeweilgen Protokolle.
+
+Format: CDP nutzt ein klassisches Cisco-Layout. LLDP verwendet strukturierte TLVs (Type-Length-Value).
+
+
+
+
+
+
+
+
+

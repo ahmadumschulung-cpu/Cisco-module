@@ -1,0 +1,90 @@
+1.Erklären Sie den Prozess der Paketzustellung.
+Gehen Sie dabei zunächst auf das Framing und der Zustellung über die Switche und Router ein, ohne das Routing einzubeziehen.
+
+** Im eigenen Netzwerk packt die Netzwerkarte Daten in Frames mit MAC-Adressen. Der Switch liest die Ziel-MAC-Adresse
+ und leitet das Paket direkt an das Gerät weiter
+
+-------------------------------------------------------------------------------------------------------
+
+
+2.Worin besteht der Unterschied zwischen einem Router und einem Switch?
+*  Switch: Verbindet Geräte innerhalb eines Netzwerks (nutzt MAC-Adressen).
+
+*  Router: Verbindet verschiedene Netzwerke miteinander (nutzt IP-Adressen).
+
+-------------------------------------------------------------------------------------------------------
+3.Wo speichert der Router seine Routingeinträge und mit welchen Befehl kann man diese auslesen?
+
+* Speicherort: Im RAM (Arbeitsspeicher) des Routers.
+
+* Befehl (Cisco): show ip route
+
+
+-------------------------------------------------------------------------------------------------------
+4.Welche Einträge Routingeinträge nutzt der Router?
+
+
+
+-------------------------------------------------------------------------------------------------------
+5.Gehen Sie auf folgende Eintragstypen ein:
+- Local :Die eigene IP-Adresse der Router-Schnittstelle.
+- Connected : Netzwerke, die direkt am Router anstecken.
+- Static : Vom Admin manuell eingetragene Wege.
+- Default : Notfall-Route (0.0.0.0/0), wenn kein anderer Weg passt.
+-------------------------------------------------------------------------------------------------------
+6.Was wird mit der Administrativen Distanz ausgedrückt und wofür wird sie eingesetzt?
+
+Gibt an, wie vertrauenswürdig eine Route ist. Je kleiner die Zahl, desto bevorzugter der Weg (z. B. Statisch = 1, OSPF = 110).
+
+
+-------------------------------------------------------------------------------------------------------
+
+7.Gehen Sie auf die Metrik ein und nennen Sie Einsatzszenarien für die Nutzung von Metrik.
+
+* Ein Wert für die Qualität eines Weges innerhalb desselben Protokolls (z. B. schnellere Leitung = bessere Metrik).
+-------------------------------------------------------------------------------------------------------
+8.Wie werden Routingeinträge generiert? Gehen Sie dabei auf die beiden Arten, statisch und dynamisch, ein.
+
+* * Statisch: Manuell vom Admin getippt.
+
+ * Dynamisch: Automatisch von Routern untereinander ausgetauscht. 
+
+-------------------------------------------------------------------------------------------------------
+
+9.Beschreiben Sie die Syntax für einen statischen Routingeintrag und geben Sie ein Beispiel dazu.
+
+* Syntax: ip route [Ziel-Netz] [Subnetzmaske] [Nächster-Router-IP]
+
+* Beispiel: ip route 192.168.2.0 255.255.255.0 10.0.0.1
+-------------------------------------------------------------------------------------------------------
+
+10.Welche Vor- und Nachteile haben statische Routen im Gegensatz zu dynamischen Routen?
+
+Statisch: Sicher und spart Prozessorleistung, aber viel Handarbeit.
+
+Dynamisch: Reagiert automatisch auf Ausfälle, braucht aber mehr Rechenleistung.
+
+-------------------------------------------------------------------------------------------------------
+11.Worin liegt der Unterschied zwischen einer Netzwerk- und einer Hostroute?
+
+Netzwerkroute: Weg zu einer ganzen Gerätegruppe (z. B. /24).
+
+Hostroute: Weg zu genau einem einzelnen Gerät (/32).
+
+-------------------------------------------------------------------------------------------------------
+12.Wie werden direkt angeschlossene Routen gegenüber erzeugten bewertet?
+
+Direkt angeschlossene Netzwerke (Connected) haben die höchste Priorität (AD = 0).
+
+
+-------------------------------------------------------------------------------------------------------
+13.Wie erkennt man eine Default Route?
+
+* Sie hat immer die Zieladresse 0.0.0.0/0.
+
+-------------------------------------------------------------------------------------------------------
+
+14.Wann kommen Floating Routen zum Einsatz? Gehen Sie dabei auf Einsatzszenarien und Eigenschaft ein.
+
+Eine statische Backup-Route mit einer höheren AD. Sie springt nur ein, wenn die Hauptleitung ausfällt.
+

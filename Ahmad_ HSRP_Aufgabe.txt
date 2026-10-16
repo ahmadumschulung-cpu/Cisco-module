@@ -1,0 +1,45 @@
+1. Nehmen Sie die Netzwerkkonfiguration von der Floating Aufgabe und richten Sie die Ausfallsicherheit für das Gateway ein.
+
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface GigabitEthernet0/1
+Router(config-if)#stan
+Router(config-if)#standby 1 ip 172.16.1.5 
+Router(config-if)#standby 1 
+Router(config-if)#standby 1 prior
+Router(config-if)#standby 1 priority 200
+Router(config-if)#standby 1 pre
+Router(config-if)#standby 1 preempt 
+Router(config-if)#do wr
+Building configuration...
+[OK]
+
+
+-------------------------------------------------------------------------------------
+2. Wozu dient das HSRP - Hot Standy Routing Protocol?
+
+* HSRP (Hot Standby Routing Protocol) sorgt für Gateway-Ausfallsicherheit. Es verbindet mehrere Router zu einer logischen Gruppe, 
+die nach außen hin eine einzige virtuelle IP-Adresse als Standard-Gateway nutzt. Fällt der aktive Router aus, springt der Standby-Router ein.
+
+
+
+
+-------------------------------------------------------------------------------------
+2. Beschreiben Sie die einzelnen Schritte, die Sie für die Ausfallsicherheit umsetzen.
+
+* Auf den Routern im lokalen Interface die virtuelle IP (standby ip ...) einrichten.
+* Eine Priorität vergeben (standby priority ...), damit der primäre Router als Active bestimmt wird.
+* Den Befehl standby preempt aktivieren, damit der Hauptrouter 
+     nach einem Reconnect automatisch wieder übernimmt
+
+
+
+-------------------------------------------------------------------------------------
+3. Welche Prozesse sind an dem Failover beteiligt?
+
+
+1. Hello-Pakete: Der aktive Router signalisiert regelmäßig, dass er online ist.
+2. Dead Timer: Bleiben die Pakete aus, erkennt der Standby-Router den Ausfall.
+3. Zustandswechsel: Der Standby-Router ändert seinen Status zu Active.
+4. GARP (Gratuitous ARP): Der neue Router informiert das Netzwerk, wodurch Endgeräte ihre MAC-Tabellen sofort
+aktualisieren und der Traffic nahtlos umgeleitet wird.

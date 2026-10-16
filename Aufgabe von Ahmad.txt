@@ -1,0 +1,66 @@
+1.(Packet Tracer) Verbinden Sie sich mit dem Konsolen Kabel mit dem Router und erstellen Sie zwei Benutzer.
+Benutzer Tim ist admin und Benutzer Tom ist User Priv 1
+Sichern Sie den Zugang zum Priv Mode für den Benutzer Tom. Nicht authorisierten Benutzern ist der Priv Mode gesperrt.
+Das Password für den Priv Mode soll gehasht gespeichert werden.
+Sperren Sie dazu den Zugang für die Console, sodass jeder Zugreifende sich authentifizieren muss.Berechtigte können sich authentifizieren.
+
+befehl
+router>enable
+router# config terminal
+router(config)# enable secret cisco123
+router(config)# username Tom privilege 1 secret 123
+router(config)# username Tim privilege 15 secret 123
+router(config)# line console 0
+router(config-line)# login local
+router(config-line)# do wr
+
+
+
+Router(config)#ena
+Router(config)#enable secre
+Router(config)#enable secret Privmode......123
+Router(config)#exit
+
+
+User Access Verification
+
+Username: tim
+Password: 
+
+Router#sh run
+Building configuration...
+
+Current configuration : 958 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+enable secret 5 $1$mERr$E.a1hF0KAAyFxYOeqAeIx0
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+username Tim privilege 15 secret 5 $1$mERr$ENfvoLSUFHx2gD93e.2NR0
+username Tom secret 5 $1$mERr$KNog7rBR9hiYhDoSmF5XY.
+!
+!
+license udi pid CISCO2911/K9 sn FTX1524MXF1-
+
+
+
+
+
+2.Welche Auswirkung hat das auf das Password, wenn man es nicht mit einem Hash versieht?

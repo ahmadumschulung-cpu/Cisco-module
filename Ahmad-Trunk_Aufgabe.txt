@@ -1,0 +1,90 @@
+ 1.Beschreiben Sie ein VLAN in Zusammenhang mit einem Switch.
+
+Ein VLAN schneidet einen physischen Switch logisch in mehrere Teile. Es sorgt dafür, dass Geräte, die am selben Switch hängen, 
+trotzdem komplett isoliert voneinander sind (z. B. Chef-Netz vs. Gäste-WLAN). Ohne Router können sie nicht miteinander reden.
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 2.Welches Einfluss hat das VLAN auf die Netzwerkumgebung und auf die Switch Infrastruktur?
+
+
+• Sicherheit: Keiner kann einfach in fremde Netze schnüffeln.
+
+• Performance: Datenmüll (Broadcasts) bleibt in seiner eigenen "Blase" und bremst nicht das gesamte Firmennetzwerk aus.
+
+
+-----------------------------------------------------------------------------------------------------
+ 3.Wozu werden SVI (switch virtuell interface) eingerichtet?
+Ein SVI ist ein virtuelles Interface auf dem Switch (z. B. interface vlan 10). Man braucht es, damit der Switch eine IP-Adresse bekommt 
+  – entweder zum Draufschalten für den Admin (Management) oder damit der Switch selbst den Verkehr zwischen den VLANs hin- und herroutet (Inter-VLAN-Routing).
+
+
+-----------------------------------------------------------------------------------------------------
+ 4.Nennen Sie die Vor und Nachteile eines Trunk.
+
+• Vorteil: Man braucht nur ein einziges Kabel zwischen zwei Switches, um den Datenverkehr von
+50 verschiedenen VLANs gleichzeitig zu übertragen. Spart massig Ports und Kabel.
+
+• Nachteil: Wenn das eine Kabel kaputtgeht, fliegen alle VLANs gleichzeitig aus dem Netz (Single Point of Failure).
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 5.Gehen Sie auf das Tagging ein, mit dem über dem Trunk die Frames versendet werden. Wie wird das Tagging umgesetzt?
+
+
+Damit der Switch am anderen Ende weiß, welcher Frame in welches VLAN gehört, klebt der sendende Switch eine Markierung an den Ethernet-Frame (IEEE 802.1Q Tag). 
+Das ist wie ein Post-it mit der VLAN-ID (z. B. "10"). Der Empfänger-Switch liest das Post-it, reißt es ab und wirft den Frame in das richtige VLAN.
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 6.Wie werden Pakete über ein Trunk aus unterschiedlichen VLANs zugestellt?
+
+PC sendet ungetaggt → Switch A packt das VLAN-10-Tag drauf → Frame fliegt über den Trunk → Switch B liest das Tag ("Ah, VLAN 10"), macht es ab → Frame kommt sauber beim Ziel-PC in VLAN 10 an.
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 7.Wozu wird das DTP (dynamich trunking protocol) verwendet?
+
+DTP ist ein Cisco-Protokoll, das Switches erlaubt, untereinander auszuhandeln, ob sie ein Trunk oder ein Access-Port werden wollen. Es automatisiert den Aufbau. Da es aber ein Sicherheitsrisiko ist
+  (Gegenseite kann ausgetrickst werden), schaltet man es in der Praxis meistens ab.
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 8.Wozu werden Access Port eingesetzt, nennen Sie den dazu notwendigen Befehl?
+
+Gehört immer zu genau einem VLAN und ist der Anschluss für Endgeräte (PCs, Drucker, Server). Am Endgerät kommen niemals Tags an.
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 9.Was macht ein Trunk Port und auf welche unterschiedlichen Modi kann ein Trunk aufgebaut werden?
+
+
+Ein Trunk überträgt viele VLANs gleichzeitig. Er kann über DTP in verschiedenen Modi laufen:
+• Trunk (On): Dauerhaft an.
+• Dynamic Desirable: Fragt die Gegenseite aktiv: "Wollen wir einen Trunk bauen?"
+• Dynamic Auto: Wartet passiv ab, ob die Gegenseite einen Trunk will.
+
+
+
+-----------------------------------------------------------------------------------------------------
+ 10.Beschreiben Sie das untagged Native VLAN? Wozu dient es?
+
+Das Native VLAN (Standard: VLAN 1) ist die Ausnahme von der Tagging-Regel. Alles, was im Native VLAN transportiert wird, kriegt keinen VLAN-Tag aufgeklebt. Es dient dazu, dass uralte 
+Geräte ohne VLAN-Ahnung oder wichtige Switch-Steuersignale (wie CDP/STP) trotzdem problemlos durch den Trunk fließen können.
+
+
+
+
+
+
+
+
