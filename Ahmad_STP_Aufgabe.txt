@@ -1,0 +1,69 @@
+1.Gehen Sie auf die unterschiedlichen Partstatus ein und erklären Sie deren Eigenschaften:
+
+• Down: Port aus oder kein Kabel. Keine Auswirkung.
+
+• Blocking: Loop-Schutz. Port blockiert Datenverkehr, hört aber auf BPDUs (STP-Nachrichten), um bei
+            Ausfällen einzuspringen.
+
+• Listening: Berechnet die Netzwerk-Rollen. Blockiert Daten, lernt keine MAC-Adressen.
+
+• Learning: Baut die MAC-Tabelle auf, leitet aber noch keine Daten weiter (verhindert Datenfluten nach dem
+            Einschalten).
+
+• Forwarding: Voll aktiv. Leitet Daten weiter und lernt MAC-Adressen. Normaler Betriebszustand.
+
+• Blocking / Discarding (nur bei RSTP): Fasst Down, Blocking und Listening in einem schnellen Status
+                                        zusammen.
+
+
+
+Beschreiben Sie bei den Porststatus die Auswirkungen auf das Netzwerk und die damit verbundenen Auswirkungen.
+Antwort : Der Wechsel von Blocking zu Forwarding dauert traditionell 30–50 Sekunden. In dieser Zeit hat das
+          Endgerät kein Netz (DHCP-Timeouts möglich).
+
+
+2.Erklären Sie folgende STP Varianten:
+
+• STP (802.1D): Das Ur-Protokoll. Träge (bis zu 50 Sek. Wechselzeit) und sieht das gesamte Netzwerk als eine
+                einzige Fläche, egal wie viele VLANs existieren.
+
+• PVST+ (Cisco): Berechnet ein eigenes STP pro VLAN. Erlaubt Lastverteilung, braucht aber mehr CPU auf dem
+                 Switch.
+
+• RSTP (802.1w): Modern und extrem schnell (Konvergenz unter 1 Sekunde durch direkten Handshake zwischen
+                Switches statt starrer Timer).
+
+
+• Rapid PVST+ (Cisco): Die Königsklasse. Kombiniert die extreme Geschwindigkeit von RSTP mit der VLAN-
+                        Trennung von PVST+. Standard in modernen Cisco-Netzen.
+
+
+
+3.Wozu werden Portfast und BPDUGuard genutzt und eingesetzt.
+Skizzieren Sie ein Szenario für den Einsatz und den Zweck.
+
+• PortFast: Schaltet Ports für Endgeräte (PCs, Drucker) sofort in den Forwarding-Status. Keine 30 Sekunden
+            Wartezeit, das Gerät kriegt sofort eine IP.
+
+• BPDU Guard: Der Sicherheitsgurt für PortFast. Da an PortFast-Ports nur PCs hängen sollten, darf dort
+                niemals ein STP-Paket (BPDU) ankommen.
+
+• Szenario: Steckt ein Mitarbeiter heimlich einen eigenen Switch an die Wanddose, erkennt der BPDU Guard die
+            BPDU des fremden Switches und schaltet den Port sofort ab (err-disable), um eine Netzwerkschleife zu verhindern.
+
+
+
+4.Wieso macht es Sinn über PVST+ die Root Bridges je VLAN zu definieren?
+
+Wenn ein Switch die Root Bridge für alle VLANs ist, fließen alle Daten über denselben Weg. Redundante Leitungen liegen brach (50% Bandbreitenverschwendung).
+
+• Lösung mit PVST+: Man macht Switch A zur Root Bridge für VLAN 10 und Switch B zur Root Bridge für VLAN 20.
+
+• Effekt: VLAN 10 nutzt Kabel 1, VLAN 20 nutzt parallel Kabel 2. Fällt ein Kabel aus, springt das andere für
+          beide VLANs ein. Das sorgt für maximale Bandbreitenausnutzung und schützt vor Überlastung.
+
+
+
+
+
+

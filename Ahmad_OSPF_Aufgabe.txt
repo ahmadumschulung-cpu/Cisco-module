@@ -1,0 +1,111 @@
+1. Wozu werden Routing Protokolle benötigt?
+
+ -  Sie lassen Router automatisch Netzwerke erkennen, sich an Änderungen anpassen und immer den besten Weg  für Datenpakete finden (anstatt alles manuell einzutragen).
+
+
+2. Gehen Sie auf folgende Eigenschaften von Routing Protokollen ein:
+- Einsatzort
+    - interior : Für Netzwerke innerhalb einer Firma/Organisation (IGP wie OSPF).
+    - exterior : Für den Datenaustausch zwischen verschiedenen Firmen/Providern im Internet (EGP wie BGP).
+- Distance Vektor : Router tauschen ihre Tabellen aus; die Entscheidung basiert auf "Entfernung" (z. B.
+                    Hops)und Richtung.
+- Link State : Jeder Router kennt die komplette Netzwerkkarte und berechnet den besten Weg selbst.
+
+
+3. Worin unterscheiden sich folgende Routing Protokolle
+
+- RIP: Simpel, zählt nur Router-Sprünge (Hops, max. 15), langsam.
+
+- OSPF: Modern, schnell, berechnet Wege über Bandbreitenkosten (nutzt Bereiche (Areas).
+
+- EIGRP: Cisco-Protokoll, sehr schnell, kombiniert Vorteile, nutzt Bandbreite und Verzögerung als Metrik.
+
+
+4. Erklären Sie die Routing Logik anhand folgender Kriterien:
+
+Longest Prefix Match: Der Router wählt immer die spezifischste (längste) Subnetzmaske für das Ziel.
+
+Administrative Distanz (AD): Legt fest, welches Protokoll am vertrauenswürdigsten ist (niedriger = besser).
+
+Metrik: Bewertet die Kosten von Wegen innerhalb desselben Protokolls (niedriger = besser)
+
+5. Welche AD haben OSPF, RIP, EIGRP?
+
+EIGRP (intern) = 90
+
+OSPF = 110
+
+RIP = 120
+
+6.Beschreiben Sie den OSPF Informationsaustausch anhand folgender Punkte
+
+- Hello-Pakete: Finden Nachbarn und prüfen, ob sie noch da sind.
+
+- LSA: Nachrichten über den Zustand von Verbindungen und Nachbarn.
+
+- SPF: Der Algorithmus, der den kürzesten Weg berechnet.
+
+- Routing-Tabelle: Die fertige Liste aller besten Wege.
+
+
+7.Worin unterscheiden sich folgende Router Eigenschaften
+- DR / BDR : Koordinator (und Ersatz) in einem Netzwerk, damit nicht jeder mit jedem reden muss.
+
+- ABR : Verbindet verschiedene OSPF-Bereiche (Areas) miteinander.
+
+- ASBR : Verbindet das OSPF-Netzwerk mit externen Netzwerken (z. B. Internet).
+
+
+8. Wie findet die Wahl zum DR/BDR statt und welche Kriterien sind dafür maßgeblich?
+
+- Wird entschieden durch: 1. Priorität (höher gewinnt, 0 = macht nicht mit), bei Gleichstand gewinnt 2. die
+    höchste Router-ID.
+
+
+
+9. Mit welchem Befehl kann ich die DR/BDR Wahl reinitieren?
+
+
+ -> :  clear ip ospf process
+
+
+
+
+10.Was beinhalten Hello und LSA Meldungen?
+
+
+- Hello: Router-ID, Timer, Area-ID, bekannte Nachbarn, Priorität.
+
+- LSA: Wer der Absender ist, welche Verbindungen er hat und wie hoch die Kosten (Metrik) sind.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

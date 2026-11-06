@@ -1,0 +1,94 @@
+1.Beschreiben Sie Spanning Tree. Gehen Sie dabei auf die Arbeistweise ein.
+
+Antwort: STP ist ein Netzwerkprotokoll , das redundante Pfade in einem Ethernet-Netzwerk verwaltet, um Netzwerkschleifen (Loops) zu verhindern.
+
+
+2.Auf welchem Level im Netzwerk wird STP eingesetzt?
+Antwort : STP wird auf Layer 2 (Data Link Layer / Sicherungsschicht) des OSI-Modells eingesetzt, da es primär auf Ethernet-Switches arbeitet.
+
+
+3.Was würde passieren, wenn Sie STP deaktivieren? Gehen Sie dabei auf MAC Address Flapping und Broadcast Storm ein.
+
+Antwort:  Wenn Sie STP deaktivieren, während redundante Kabel zwischen Switches existieren, führt dies zu katastrophalen Netzwerkausfällen:
+
+* Broadcast Storm (Broadcast-Sturm): Broadcasts werden endlos im Kreis geschickt, weil es keine logische
+                   Begrenzung gibt. Die Bandbreite bricht komplett ein und die Switches überlasten.
+
+* MAC Address Flapping: Da Frames über verschiedene Ports im Kreis ankommen, springt der MAC-Adress-Eintrag
+               eines Endgeräts in der Switch-Tabelle ständig hin und her (z. B. "Port A, nein doch Port B").
+
+
+4.Erklären Sie folgende Begrifflichkeiten im Kontext STP:
+- Root Bridge : Der zentrale "Haupt-Switch" im Netzwerk, der als Referenzpunkt für alle Pfadberechnungen
+                dient. Der Switch mit der niedrigsten Bridge ID wird gewählt.
+
+- BRIDGE ID : Eine eindeutige Kennung für jeden Switch, bestehend aus einer Priorität (Standard meist 32768)
+              und der MAC-Adresse des Switches.
+
+
+- BPDU : BPDU (Bridge Protocol Data Unit): Die Kontrollnachrichten, die Switches untereinander austauschen,
+         um Topologie-Informationen zu teilen und den Zustand zu überwachen.
+
+
+- Path Cost : Die Kosten für die Nutzung eines Pfades (hängt von der Bandbreite ab, z. B. 1 Gbit/s hat
+                geringere Kosten als 100 Mbit/s). Niedrigere Gesamtkosten werden bevorzugt.
+
+
+- Lsitening, Learning :Zustände beim Hochfahren eines Ports vor dem normalen Datentransfer.
+
+            * Listening: Der Port lauscht auf BPDUs, leitet aber noch keine Daten weiter und lernt keine MAC-Adressen.
+
+
+            * Learning: Der Port lernt nun MAC-Adressen, leitet aber weiterhin keine normalen Benutzerdaten weiter.
+
+
+
+- MAX AGE : Ein Timer (Standard: 20 Sekunden). Wenn ein Switch so lange keine BPDUs mehr von der Root Bridge
+            hört, geht er davon aus, dass ein Fehler vorliegt, und startet die Neuberechnung der Topologie.
+
+
+- Root Port : Der Port an einem Nicht-Root-Switch, der den günstigsten Pfad (geringste Path Cost) zur Root
+                Bridge hin darstellt.
+
+
+- Designated Port : Der Port an einem Segment (Kabel zwischen Switches), der die besten Kosten zur Root
+                    Bridge bietet und für die Datenweiterleitung in dieses Segment zuständig ist.
+
+
+
+- Non Designated Port : Ein Port, der blockiert wird (Blocking State), um Schleifen im Netzwerk zu
+                        verhindern. Er leitet im Normalbetrieb keine Daten weiter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+1.Szenario: Sie haben einen PC, PC1.Neuss.de, der dem PC2, PC2.dortmund.de, eine Datei senden möchte.
+Beschreiben Sie den Prozess beginnend beim PC1 bis zum Senden und Empfangen von PC2. Bleiben Sie dabei auf Netzwerkebene.
+
+
+
+Weil die PCs in verschiedenen Städten (Netzwerken) stehen, geht das so:
+
+Adresse suchen: PC1 findet über den Namen heraus, welche IP-Adresse PC2 hat.
+
+Routing Entscheidung: PC1 merkt: "Das ist nicht mein Netzwerk." Er schickt die Datei deshalb an seinen lokalen Router (das Standard-Gateway).
+
+Routing durchs das WAN: Der Router schaut auf die IP-Adresse und schickt das Datenpaket weiter über das Internet von Router zu Router, bis es in Dortmund ankommt.
+
+Zustellung: Der letzte Router in Dortmund gibt die Datei direkt an PC2 ab.
+
+
+2.Erklären Sie VLANs in Verbindung mit Switches.
+
+Ein VLAN teilt einen echten Switch elektronisch in mehrere virtuelle (gedachte) Switches auf.
+
+1.Geräte an Port 1 und 2 können in "VLAN Blau" sein.
+2.Geräte an Port 3 und 4 in "VLAN Rot".
+
+Obwohl alle am selben Kasten stecken, können Blau und Rot nicht miteinander reden. Das sorgt für Sicherheit und Ordnung.
+
+3.Beschreiben Sie im Kontext des Switches Flooding und Switching.
+
+Switching: Switching (Gezieltes Senden): Der Switch weiß ganz genau, an welchem Kabel (Port) ein Gerät hängt. Er schickt die Daten nur dorthin.
+
+
+Flooding: Wenn der Switch die Adresse nicht kennt, weiß er nicht, wo das Gerät ist. Er schickt die Daten an alle Kabel gleichzeitig heraus. Sobald das richtige Gerät antwortet, merkt sich der Switch den Platz für das nächste Mal.
+
+
+
+4.Worin unterscheiden sich Router und Switch.
+
+Switch: Ist der Verteiler innerhalb eines Hauses. Er verbindet Computer, Drucker und Fernseher im selben Raum. Er nutzt dafür Hardware-Adressen (MAC-Adressen).
+
+
+Router: Ist die Brücke nach draußen. Er verbindet Ihr Zuhause mit dem Internet oder mit anderen Firmennetzen. Er nutzt dafür Internet-Adressen (IP-Adressen).

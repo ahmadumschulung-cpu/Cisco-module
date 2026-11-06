@@ -1,0 +1,101 @@
+ 1. Szenario: Client A möchte Client B eine Mail versenden, von Standort A nach Standort B über WWW. Beschreiben Sie den Sendeprozess in Bezug auf die Namensauflösung. Blenden Sie hierbei das Senden auf Netzwerkebene aus.
+
+ • Schritt 1: Der Mailserver von Standort A fragt im DNS nach dem MX-Record der Domain firma-b.de, um herauszufinden, welcher Server für die Mails zuständig ist.
+ • Schritt 2: Das DNS antwortet mit dem Namen des Ziel-Mailservers (z. B. mail.firma-b.de).
+ • Schritt 3: Da der Absender-Server eine IP-Adresse braucht, fragt er im DNS nach dem A-Record für diesen Namen.
+ • Schritt 4: Nach Erhalt der IP-Adresse ist die Namensauflösung fertig und die E-Mail wird direkt an den Ziel-Mailserver gesendet.
+
+
+ ------------------------------------------------------------------------------------------------------------
+
+ 2.Was ist ein FQDN? Beschreiben Sie die einzelnen Elemente.
+
+
+ FQDN bedeutet Fully Qualified Domain Name. Er bezeichnet einen vollständig angegebenen und eindeutigen Hostnamen.
+
+• Root-Zone (.): Die oberste Wurzel des DNS-Baums (wird im Browser meist weggelassen).
+
+• Top-Level-Domain (TLD - de): Die Länderkennung oder generische Endung.
+
+• Second-Level-Domain (firma): Der eigentliche, registrierte Name der Organisation/Firma.
+
+• Subdomain (hauptsitz): Ein organisatorischer oder geografischer Unterbereich innerhalb der Firma.
+
+• Host-Name / Computer-Name (p01): Der konkrete Name des einzelnen Geräts oder Servers.
+
+------------------------------------------------------------------------------------------------------------
+
+ 3.Auf welchem Dialog werden die IP Adressen eingetragen?
+ Erklären Sie hierbei die einzelnen Felder.
+
+ Unter Windows im Dialog „Eigenschaften von Internetprotokoll, Version 4 (TCP/IPv4)”.
+
+IP-Adresse: Eindeutige Adresse des PCs im Netzwerk.
+
+Subnetzmaske: Trennt Netzwerk- und Hostanteil der IP-Adresse.
+
+Standardgateway: IP-Adresse des Routers für Verbindungen in andere Netzwerke.
+
+Bevorzugter DNS-Server: Übersetzt DNS-Namen in IP-Adressen.
+
+Alternativer DNS-Server: Ersatz-DNS-Server, falls der bevorzugte nicht erreichbar ist.
+
+
+ ------------------------------------------------------------------------------------------------------------
+
+ 4.Nennen Sie den Vor- und Nachteil einer automatischen IP Adressierung über DHCP gegenüber einer statischen Konfiguration.
+
+Vorteil: Die IP-Konfiguration erfolgt automatisch. Das spart Zeit, reduziert Fehler und verhindert normalerweise doppelte IP-Adressen.
+
+Nachteil: Man ist vom DHCP-Server abhängig. Neue Geräte können bei einem Ausfall keine neue IP-Konfiguration erhalten.
+
+
+ ------------------------------------------------------------------------------------------------------------
+
+ 5.Erklären Sie den Prozess, mit dem der Client eine IP Adresse von einem DHCP Server bezieht.
+
+
+* Der Erstbezug funktioniert nach dem DORA-Prinzip in vier Schritten:
+
+• D – Discover (Broadcast): Der Client ruft laut ins gesamte Netz: "Ich brauche eine IP-Adresse!"
+
+• O – Offer (Unicast/Broadcast): Der DHCP-Server antwortet mit einem Angebot: "Du kannst die IP 192.168.1.50 haben."
+
+• R – Request (Broadcast): Der Client sagt laut: "Danke, ich nehme genau dieses Angebot an!"
+
+• A – Acknowledge (Unicast): Der Server bestätigt: "Alles klar, die IP gehört jetzt dir inklusive aller Netzwerkdaten
+
+
+ ------------------------------------------------------------------------------------------------------------
+
+ 6.Worin besteht der limitierende Faktor bei einem Bezug einer IP Adresse über Netzwerksegmente hinaus?
+
+ Der limitierende Faktor ist der Router. Da die erste Anfrage des Clients (DHCP-DISCOVER) ein Broadcast (Rundruf) ist, blockiert der Router diese Nachricht standardmäßig. Router leiten Broadcasts nicht in andere Netzwerke weiter.
+Deshalb benötigt man einen DHCP Relay Agent im router konfigurieren.
+
+ ------------------------------------------------------------------------------------------------------------
+
+ 7.Worin unterscheidet sich die Erneuerung einer IP Adresse von der des ersten Bezugs?
+
+
+° Beim Erstbezug hat der Client noch keine IP-Adresse. Er muss über Broadcasts (Rundrufe an alle) alle vier DORA-Schritte durchlaufen.
+
+Bei der Erneuerung besitzt der Client bereits eine IP-Adresse und versucht, seine bestehende Lease zu verlängern. Dabei kommuniziert er zunächst gezielt mit dem DHCP-Server.
+
+ ------------------------------------------------------------------------------------------------------------
+
+ 8.Mit welchem Befehl wird der Relay Agent auf einem Router konfiguriert.
+
+
+ Der Relay Agent wird auf dem passenden Interface des Routers mit diesem Befehl aktiviert:
+
+👉 ip helper-address [IP-Adresse-des-DHCP-Servers]
+
+
+ ------------------------------------------------------------------------------------------------------------
+
+ 9.Über welches Protocoll kommunizieren DHCP und DNS, nennen Sie dazu auch die Ports?
+
+ Beide nutzen das schnelle, verbindungblose Protokoll UDP:
+• DHCP: Nutzt UDP-Port 67 (für den Server) und UDP-Port 68 (für den Client).
+• DNS: Nutzt UDP-Port 53.

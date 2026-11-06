@@ -1,0 +1,63 @@
+1.was ist die Hauptaufgabe eine VLAN?
+Die Hauptaufgabe eines VLANs (Virtual Local Area Network) ist es, ein physisches Netzwerk logisch in mehrere, voneinander isolierte Broadcast-Domänen zu unterteilen. Dadurch können Geräte unabhängig von ihrem physischen Standort in Gruppen eingeteilt werden. Das erhöht die Sicherheit, reduziert unnötigen Netzwerkverkehr (Broadcasts) und vereinfacht die Verwaltung.
+
+
+2.Was ist ein Voice VLAN?
+
+Ein Voice VLAN ist ein speziell konfiguriertes VLAN, das ausschließlich für den Transport von Sprachdaten (VoIP – Voice over IP) reserviert ist. Es stellt sicher, dass zeitkritische Sprachpakete getrennt vom normalen Datenverkehr transportiert werden, um Verzögerungen und Sprachaussetzer zu verhindern.
+
+
+3.Erklären Sie den Unterschied zwischen einen Data VLAN und Voice VLAN.
+
+• Data VLAN: Transportiert den normalen Benutzerverkehr (Websites, E-Mails, Dateitransfers). Dieser Verkehr ist unempfindlich gegenüber minimalen Verzögerungen.
+
+• Voice VLAN: Transportiert Echtzeit-Sprachdaten. Da Telefongespräche extrem empfindlich auf Verzögerungen                    (Delay) und Schwankungen (Jitter) reagieren, erhält dieses VLAN im Netzwerk automatisch eine höhere   Priorisierung (QoS – Quality of Service).
+
+
+4.Ein PC ist über ein IP Telefon mit einem Switch verbunden, wie wird der Datenverkehr übertragen?
+
+Wenn ein PC an die Switch-Buchse eines IP-Telefons angeschlossen ist und das Telefon wiederum am Switch hängt, teilen sich beide Geräte ein einziges Kabel zum Switch.
+Der Datenverkehr wird über einen Mini-Switch im Inneren des IP-Telefons zusammengeführt:
+• Das Telefon leitet seine eigenen Sprachdaten weiter.
+• Das Telefon reicht die Daten des PCs unverändert durch.
+• Am Switch-Port kommen beide Datenströme an, werden aber anhand ihrer VLAN-Tags sauber voneinander getrennt.
+
+
+5.Warum wird der Sprachverkehr getagged und der Datenverkehr ungetagged gesendet?
+
+• Sprachverkehr (Tagged): Das IP-Telefon fügt seinen Paketen ein 802.1Q-VLAN-Tag hinzu. Dieses Tag enthält neben der VLAN-ID auch Priorisierungs-Informationen (CoS/QoS). Der Switch erkennt dadurch sofort: "Das ist wichtiger Sprachverkehr, er wird bevorzugt behandelt."
+
+• Datenverkehr (Ungetagged): Der PC weiß in der Regel nichts von VLANs und sendet Standard-Ethernet-Rahmen ohne Tag. Das IP-Telefon leitet diese einfach ungetagged an den Switch weiter. Der Switch ordnet diesen ungetagged Verkehr dann automatisch dem normalen Daten-VLAN (Acces
+
+
+6.Was ist ein PoE?
+PoE (Power over Ethernet) ist eine Technologie, die es ermöglicht, Netzwerkgeräte über das normale Ethernet-Kabel gleichzeitig mit Daten UND Strom zu versorgen. Dadurch benötigen Geräte wie IP-Telefone, WLAN-Access-Points oder Überwachungskameras kein separates Netzteil und keine Steckdose in der Nähe.
+
+
+7.Was ist ein native VLAN und welche Aufgabe hat es?
+
+Das Native VLAN ist ein spezielles VLAN auf einem Trunk-Link (Verbindung zwischen zwei Switches). Seine Aufgabe ist es, allen Datenverkehr aufzunehmen, der keine VLAN-Markierung (ungetagged) besitzt. Wenn ein Switch auf einem Trunk-Port ein Paket ohne Tag empfängt, ordnet er es automatisch dem Native VLAN zu.
+
+
+8.Welches VLAN ist bei Cisco standardmäßig das native VLAn?
+
+Bei Cisco-Geräten ist standardmäßig das VLAN 1 als Native VLAN (sowie als Management-VLAN und Access-VLAN) voreingestellt. Aus Sicherheitsgründen wird in der Praxis dringend empfohlen, das Native VLAN auf eine andere, ungenutzte VLAN-ID zu ändern.
+
+
+
+9.Was ist der Unterschied zwischen einem Access VLAN und einem Native VLAN?
+
+Access Vlan:   -> access port  -> Ungetagged
+
+
+
+Native Vlan:  -> trunk port     -> Ungetagged
+
+
+
+
+
+
+
+
+

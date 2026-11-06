@@ -1,0 +1,96 @@
+ 1.Erklären Sie die Funktionsweise von ARP anhand der Layer 2 und 3. Beziehen dabei einen einen Switch und Router ein.
+
+
+ Was ist das? Computer kennt IP-Adresse, braucht aber MAC-Adresse zum Senden.
+ Wie funktioniert es? Computer ruft: "Wer hat diese IP? Sag mir deine MAC!"
+ Geräte: Der Switch leitet den Ruf an alle weiter. Der Router antwortet, wenn Daten in ein anderes Netz müssen.
+
+  -----------------------------------------------------------------------------------------------------------
+
+
+
+
+ 2.Welche Arten von Diagrammen kennen Sie? Nennen Sie Vor und Nachteile der Diagrammtypen.
+
+
+ Netzwerkplan: Zeigt Kabel und Geräte. (Vorteil: Übersicht / Nachteil: Schnell zu voll)
+
+ Säulendiagramm: Vergleicht Mengen. (Vorteil: Schnell kapiert / Nachteil: Schlecht für Zeitverläufe)
+
+ Liniendiagramm: Zeigt Trends über Zeit. (Vorteil: Man sieht Steigen/Fallen / Nachteil: Zu viele Linien verwirren)
+
+ Kreisdiagramm: Zeigt Prozent-Teile. (Vorteil: Zeigt das "Ganze" / Nachteil: Schlecht bei vielen kleinen Teilen)
+
+
+ -----------------------------------------------------------------------------------------------------------
+
+
+ 3.Worin unterscheidet sich Half- und Vollpuplex?
+
+
+Half: Wie ein Funkgerät. Nur abwechselnd sprechen.
+Gleichzeitig Senden = Unfall (Kollision).
+
+Full: Wie ein Telefon. Gleichzeitig sprechen und hören. Keine Unfälle.
+
+
+  -----------------------------------------------------------------------------------------------------------
+
+
+
+ 4.Gehen Sie auf die Evolution des Switches von den Anfängen mit Hub über Bridges ein.
+ Beziehen Sie hierbei Kollissionsdomänen ein, MAC AddressTable und CSMA/CD ein.
+
+
+ Hub: Dumm. Schickt Daten an alle Kabel. Ständig Unfälle (Kollisionen). Geräte müssen lauschen, ob frei ist (CSMA/CD).
+
+
+ Bridge: Teilt das Netz in zwei Hälften, um Unfälle zu halbieren.
+
+ Switch: Schlau. Lernt, wer wo wohnt (MAC-Tabelle). Schickt Daten nur zum echten Empfänger. Keine Unfälle mehr, CSMA/CD wird gelöscht.
+
+   -----------------------------------------------------------------------------------------------------------
+
+
+
+ 5.Was sind Protokolle und wozu werden diese eingesetzt?
+
+Die Sprache und Regeln für Computer. Ohne das würden sich Windows, Apple und Android nicht verstehen.
+
+ ------------------------------------------------------------------------------------------------------------
+
+
+ 6.Sie haben folgende Protokolle: HTTP, FTP, DNS, DHCP, SNMP, SMTP, TELNET. Ordnen Sie diese Protokolle TCP und UDP zu und benennen Sie dazu diedazugehörigen Ports.
+
+ Netzwerk-Protokolle nutzen entweder TCP (sicher, mit Empfangsbestätigung – wie ein Einschreiben) oder UDP (schnell, ohne Kontrolle – wie ein Postwurfsendung).
+
+ IP-Adresse ist die Hausnummer. Port ist die Zimmernummer im PC (z. B. Zimmer für Browser, Zimmer für E-Mail).
+
+ Wichtigste Ports: HTTP (Internet = 80), FTP (Dateien = 21), DNS (Namenssuche = 53), DHCP (Auto-IP = 67/68).
+ -----------------------------------------------------------------------------------------------------------
+
+
+
+ 7.Wozu werden Ports benötigt?
+
+ Eine IP-Adresse findet nur das Gerät (wie die Postadresse eines großen Bürogebäudes).Ein Port findet die richtige Anwendung auf diesem Gerät (wie die Raumnummer im Gebäude).
+
+ Das Problem: Dein PC macht viele Dinge gleichzeitig: Du surfst im Internet, streamst Musik und schreibst eine E-Mail.
+
+ Die Lösung: Wenn Daten an deinem PC ankommen, schaut das Betriebssystem auf die Portnummer. Nur so weiß der PC: "Ah, diese Daten gehören zum Browser und nicht zum Musik-Stream!"
+
+
+
+ ------------------------------------------------------------------------------------------------------------
+ 8.Szenario: Sie haben neue PC bekommen und hängen diese ins Netz. Beschreiben den Weg eines Frames zwischen
+ den neuen PCs.
+ Gehen Sie dabei auch auf die Weiterleitung durch einen Router ein und die Veränderungen des Frames und des Pakets.
+
+
+Der Umschlag (Layer 2 - MAC): Wird von jedem Router zerrissen und neu geschrieben.Der Brief (Layer 3 - IP): Bleibt vom Start bis zum Ziel immer gleich.
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------

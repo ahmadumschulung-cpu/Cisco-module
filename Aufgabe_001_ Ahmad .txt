@@ -1,0 +1,80 @@
+Aufgabe 1.
+Beschreiben Sie BUS Toplogie und die damit verbundenen Kabel, die eingesetzt wurden.
+Antwort: Alle Geräte hängen an einem Hauptkabel mit Abschlusswiderständen (Terminatoren) an den Enden.
+    -----  Kabel: Koaxialkabel (RG-58) mit BNC-Steckern.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 2. Nennen Sie den Unterschied eines ungeschirmten und abgeschirmten Twisted Pair Kabel.
+
+
+Antwort:UTP: Ungeschirmt, flexibel, günstig, anfällig für Störungen.
+        STP: Abgeschirmt (Folie/Geflecht), starrer, teurer, geschützt gegen Störungen.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Aufgabe 3. Welcher Unterschied gibt es zwischen Cat5, Cat6 und Cat7 Kabeltypen?
+
+Antwort:Cat5e: Bis 1 Gbit/s / 100 MHz (älterer Standard). (ungeschimt )
+        Cat6a: Bis 10 Gbit/s / 500 MHz (moderner Standard). ( schimmung)
+    --- Cat7: Bis 10 Gbit/s / 600 MHz (immer voll abgeschirmt, zukunftssicher).(schimmung )
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 4. Worin unterscheiden sich crossover und straight throgh Kabel?
+
+Antwort:   Straight-Through: Verbindet verschiedene Geräte (PC zu Switch). Pin-Belegung ist 1:1.
+    --  Crossover: Verbindet gleiche Geräte (PC zu PC). Sende- und Empfangsleitungen sind gekreuzt.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 5. Wieso ist der Unterschied eines crossover und Straight Through Kabel heutzutage nicht relevant?
+
+Antwort: Weil die Geräte heute schlau sind (Auto-MDIX). Sie merken selbst, was angeschlossen ist, und drehen die Leitungen im Stecker automatisch passend um.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 6.Für welchen Einsatz würden Sie ein Galsfaserkabel nutzen und für welchen ein Kuperkabel? Gehen Sie dabei auf die Eigenschaften und Unterschiede ein.
+
+Antwort:Glasfaser: Für lange Strecken (Kilometer) und Rechenzentren. Schnell, teuer, unempfindlich gegen              Elektrosmog.
+    Kupfer: Für kurze Strecken (bis 100m) zum Endgerät. Günstig, robust, liefert Strom (PoE).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 7.Beschreiben Sie folgende Kommunikationsformen und nennen Sie dazu ein praxisnahes Beispiel:
+
+- Unicast: 1 an 1 (Beispiel: Website aufrufen).
+- Anycast:  1 an Gruppe (Beispiel: IPTV / Live-Stream).
+- Multicast: 1 an den Nächsten (Beispiel: DNS-Anfrage an 8.8.8.8).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 8.Gehen Sie auf die Layer 2 und Layer 3 des OSI Models ein.
+Nennen Sie hierbei die Eingenschaften und Unterschiede. Geben Sie zu den einzlenen Layer Praxisbeispiele an.
+
+Antwort:--  Layer 2 (Sicherungsschicht): Arbeitet mit MAC-Adressen im lokalen Netz (LAN).
+Beispiel: Switch.
+
+--- Layer 3 (Vermittlungsschicht): Arbeitet mit IP-Adressen netzwerkübergreifend. Beispiel: Router.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 9.Nennen Sie den Unterschied von TCP zu UDP.
+
+Antwort:TCP: Zuverlässig, prüft auf Vollständigkeit, langsamer (z. B. Downloads, Webseiten).
+
+       UDP: Schnell, "Fire-and-Forget" ohne Prüfung (z. B. Gaming, Video-Call).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 10. in welcher Tabelle auf dem Client wird die MAC gespeichert und in welcher auf dem Switch?
+
+Antwort:Client: In der ARP-Tabelle.
+        Switch: In der MAC-Adresstabelle (CAM-Tabelle).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Aufgabe 11. Was macht ein Switch, wenn ein neues angeschlossenes Gerät einen Frame sendet?
+
+Antwort:Er liest die Absender-MAC und lernt (speichert), an welchem Port das Gerät hängt.
+
+        Wenn er die Ziel-MAC noch nicht kennt, schickt er den Frame an alle Ports außer den Quellport (Flooding).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

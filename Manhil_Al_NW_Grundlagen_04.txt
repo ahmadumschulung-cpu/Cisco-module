@@ -1,0 +1,77 @@
+ 1. Szenario: Client A möchte Client B eine Mail versenden, von Standort A nach Standort B über WWW. Beschreiben Sie den Sendeprozess in Bezug auf die Namensauflösung. Blenden Sie hierbei das Senden auf Netzwerkebene aus.
+
+ 1.Anfrage an DNS-Server.
+ 2.Rekursive Auflösung -> DNS-Server fragt nach Name-Server.
+ 3.Name-Server gibt den Fully Qualified Domain Name wieder.
+ 4.IP-Adresse wird durch den FQDN ermittelt.
+ 5.Eine SMTP-Verbindung wird mit der IP-Adresse aufgebaut.
+
+ -------------------------------------------
+
+ 2.Was ist ein FQDN? Beschreiben Sie die einzelnen Elemente.
+
+ 1.Root-Domain -> Wurzel des DNS-Baum (.)
+ 2.TLD         -> Höchste Ebene im       Namesserver (de)
+ 3.Second-Level-Domain -> Gwählte Name
+ 4.Struktur innerhalb der Domain
+ 5.Host-Name -> Konkrete Name des Rechners oder Dienstes.
+
+ -------------------------------------------
+
+ 3.Auf welchem Dialog werden die IP Adressen eingetragen?
+ Erklären Sie hierbei die einzelnen Felder.
+
+ 1.IP-Adresse -> (192.168.1.10)
+ 2.Subnetzmaske -> Grösse des Netzwerks (255.255.255.0)
+ 3.Default-Gateway -> Daten ausserhalb des Netzwerkes (traffic)
+ 4.DNS-Server -> Domainnamen = IP-Adresse
+
+ -------------------------------------------
+
+ 4.Nennen Sie den Vor- und Nachteil einer automatischen IP Adressierung über DHCP gegenüber einer statischen Konfiguration.
+
+ 1.Vorteil -> Kein Konfigurationsaufwand, keine manuellen Fehleingaben , keine IP-Adresskonflikte.
+
+ 2.Nachteil -> Bei ausfall keine IP-Adressvergabe.
+
+ -------------------------------------------
+
+ 5.Erklären Sie den Prozess, mit dem der Client eine IP Adresse von einem DHCP Server bezieht.
+
+ 1.Discover -> Mittels Broadcasts sendet der client ins lokale Netz, um verfügbare DHCP-Server zu suchen.
+
+ 2.Offer -> Ein Angebot von einem DHCP-Server -> IP-Adresse, Subnetzmaske ect.
+
+ 3.Request -> IP-Adresse wird vom Client eingefordert mittels Broadcast.
+
+ 4.Ackknowledgement -> DHCP-Server bestätigt Zuweisung per Unicast.
+
+ -------------------------------------------
+
+ 6.Worin besteht der limitierende Faktor bei einem Bezug einer IP Adresse über Netzwerksegmente hinaus?
+
+ 1.Zusatzkonfiguration -> DHCP-Relay-Agent.
+
+ -------------------------------------------
+
+ 7.Worin unterscheidet sich die Erneuerung einer IP Adresse von der des ersten Bezugs?
+
+ 1.Bei der Erneuerung entfallen die Schritte Discover und Offer.
+
+ 2.Der Client kontaktiert nach Ablauf der halben Lease-Zeit den bekannten DHCP-Server direkt per Unicast mit einem DHCP-Request.
+
+ 3.Reagiert der Server positiv, bestätigt er direkt mit einem DHCP-Ackknowledgement, und die Lease-Zeit wird zurückgesetzt. Es findet kein netzweiter Broadcast statt.
+
+ -------------------------------------------
+ 8.Mit welchem Befehl wird der Relay Agent auf einem Router konfiguriert.
+
+ 1.ip helper-adress
+
+ -------------------------------------------
+
+ 9.Über welches Protocoll kommunizieren DHCP und DNS, nennen Sie dazu auch die Ports?
+
+ DHCP -> 1.UDP Port 67 (Server)
+         2.UDP Port 68 (Client)
+
+ DNS  -> UDP Port 53

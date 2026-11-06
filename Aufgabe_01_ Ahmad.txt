@@ -1,0 +1,64 @@
+Aufgabe_01
+
+1.Erklären Sie mit eigenen Worten was ein Netzwerke darstellt.
+Nehmen Sie dabei Bezug auf Zentrale, Standort und Remote Zugriffe
+Antwort: Verbindet Computer zum Datenaustausch. Die Zentrale hat die Hauptdaten, der Standort (Filiale) greift darauf zu, und Remote-Mitarbeiter arbeiten von zu Hause über VPN.
+
+
+2.Nennen Sie die Funktion eines Switch?
+Antwort:Ein Verteiler innerhalb eines Netzwerks. Er schickt Daten per Kabel gezielt an ein Gerät (nutzt MAC-Adressen).
+
+3.Welche Aufgabe erfüllt ein Router und worin unterscheidet sich dieser vom Switch?
+
+Antwort:Der Switch verbindet Geräte im selben Netzwerk. Der Router verbindet verschiedene Netzwerke miteinander (z. B. Firma mit dem Internet via IP-Adressen).
+
+4.Wozu dienen Access Points.
+
+Antwort: Ein Access Point (AP) verbindet kabellose Geräte (wie Smartphones oder Laptops) per Funk mit einem kabelgebundenen Netzwerk (LAN).
+
+
+5.Nennen Sie die unterschiedlichen Topologien? Welche sind die gängisten?
+Antwort: Topologie bedeutet: Der Bauplan des Netzes.  Es gibt viele Formen. Die drei wichtigsten in der Praxis sind:
+-- Stern-Topologie: Sehr oft genutzt in Büros.
+-- Baum-Topologie: Gut für große Gebäude mit vielen Etagen.
+-- Vermaschte Topologie (Mesh): Nutzt man, wenn das Netzwerk niemals ausfallen darf.
+
+6.Beschreiben Sie Layer 2 und Layer 3 bezogen auf das Netzwerk.
+
+Antwort: Das sind Schichten beim Datentransport:Layer 2 (Sicherungsschicht): Transportiert Daten im lokalen Netzwerk über MAC-Adressen. Hier arbeitet der Switch.
+
+Layer 3 (Netzwerkschicht): Transportiert Daten über Netzwerkgrenzen hinweg über IP-Adressen. Hier arbeitet der Router.
+
+7.Welchen Vorteil hat ein Layer 3 Switch gegenüber einem Router?
+
+Antwort: Ein Layer 3 Switch kann Switchen und Routen gleichzeitig. Er ist beim internen Routing viel schneller als ein normaler Router, weil er das direkt mit seiner Hardware (Chips) macht.
+
+8. Beschreiben Sie folgende Eigenschaften:
+- horizontale und vertikale Skalierung : Man kauft mehr Geräte (z. B. noch einen Server), um die Arbeit
+                                         aufzuteilen.
+
+- Verfügbarkeit: Wie oft das Netzwerk ohne Probleme läuft (z. B. 99% der Zeit im Jahr).
+
+- Ausfallsicherheit: Das Netzwerk funktioniert auch dann noch, wenn ein Kabel oder ein Gerät kaputtgeht.
+
+- Topoplogy: Der Bauplan oder die Struktur des Netzwerks.
+
+9.Worin unterscheiden sich folgende Netzwerktypen:
+- Lan: Ein kleines Netzwerk (z. B. in einer Wohnung oder in einem Büro).
+
+- WAN: Ein riesiges Netzwerk für Länder oder Kontinente. Das größte WAN ist das Internet.
+
+- MAN:Ein Netzwerk für eine ganze Stadt (verbindet z. B. Schulen und Rathäuser).
+10.
+Was sind Eigenschaften folgender Topologien:
+
+- Vermascht: Die Computer haben mehrere Verbindungen. Fällt eine Verbindung aus, nimmt man einfach einen anderen Weg.
+
+- Vollvermascht:Jeder Computer ist mit allen anderen Computern direkt verbunden. Super sicher, aber viel zu teuer.
+
+- Stern:  Alle hängen an einem zentralen Punkt (Switch). Wenn der Switch kaputtgeht, geht nichts mehr.
+
+- Baum: Wie ein Stamm mit Ästen. Man kann das Netzwerk leicht größer machen.
+
+- Linie: Die Computer hängen hintereinander wie an einer Perlenkette. Geht ein Kabel kaputt, ist das Netz getrennt.
+
